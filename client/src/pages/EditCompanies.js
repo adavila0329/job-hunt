@@ -26,7 +26,7 @@ class EditCompanies extends Component {
    return (
     <div>
       <button onClick={this.submitCompanies}>
-      submit
+      SUBMIT
       </button>
     </div>
    );
