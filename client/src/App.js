@@ -10,6 +10,8 @@ import ViewContacts from './pages/ViewContacts';
 import EditJobOpenings from './pages/EditJobOpenings';
 import ViewJobOpenings from './pages/ViewJobOpenings';
 
+// This is my new branch //
+
 class App extends Component {
   render() {
     return (
