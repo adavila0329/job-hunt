@@ -14,17 +14,37 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => { 
-         res.send("Hi"); 
+         res.send("Welcome to server.js / route"); 
     });
 
 app.get("/api/companies", function(req, res) {
-        db.Company.findAll({}).then(function(dbCompany) {
-        console.log(dbCompany);
-        res.json(dbCompany);
+      db.Company.findAll({}).then(function(dbCompany) {
+      console.log(dbCompany);
+      console.log("api/companies get \n")
+      res.json(dbCompany);
     }).catch(function(err) {
-        console.log(err);
+      console.log(err);
     });
-        });
+});
+app.get("/api/contacts", function(req, res) {
+    db.Contacts.findAll({}).then(function(dbContact) {
+    console.log("api/contacts get \n");
+    console.log(dbContact);
+    res.json(dbContact);
+}).catch(function(err) {
+    console.log(err);
+    });
+});
+
+app.get("/api/jobOpenings", function(req, res) {
+    db.JobOpening.findAll({}).then(function(dbJobOpening) {
+    console.log("api/jobOpenings get \n");
+    console.log(dbJobOpening);
+    res.json(dbJobOpening);
+}).catch(function(err) {
+    console.log(err);
+    });
+});
 
 // app.get("/", function (req, res) {
 //     event.preventDefault();
@@ -52,12 +72,36 @@ app.post("/api/companies", function(req, res) {
         //     return res.json(req.body);
     });
    
+    app.post("/api/contacts", function(req, res) {
+        db.Contacts.create(req.body).then(function(dbContact) {
+            res.json(dbContact);
+    
+        }).catch(function(err) {
+            console.log(err);
+        });
+        //     console.log(req.body);
+        //     console.log("test");
+            //db.create
+        //     return res.json(req.body);
+    });    
 // POST route for saving a new post
 // app.post("/api/posts", function(req, res) {
 //     db.Post.create(req.body).then(function(dbPost) {
 //       res.json(dbPost);
 //     });
 //   }); 
+app.post("/api/jobOpenings", function(req, res) {
+    db.JobOpening.create(req.body).then(function(dbJobOpening) {
+        res.json(dbJobOpening);
+
+    }).catch(function(err) {
+        console.log(err);
+    });
+    //     console.log(req.body);
+    //     console.log("test");
+        //db.create
+    //     return res.json(req.body);
+}); 
   
 app.use(function(req, res) { 
             res.sendFile(path.join(__dirname, "client/build/index.html")); 
