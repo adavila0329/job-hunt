@@ -4,18 +4,18 @@ import axios from 'axios';
 // import App from '../App';
 class EditCompanies extends Component {
  state = {
-     co_name: "Trilogy",
+     co_name: "Button Testing, Inc.",
      priority: 1
  };
 
  submitCompanies = () => {
-   console.log("this should go!");
+   console.log("this company should go!");
    const company = {
        co_name: this.state.co_name,
        priority: this.state.priority
  };
    axios.post("/api/companies", company).then((res) => {
-     console.log("done");
+     console.log("hard-coded company post done");
     //  this.setState({ companies: res.data });
    });
  }
@@ -32,6 +32,6 @@ class EditCompanies extends Component {
    );
  }
 }
-console.log("this works");
+console.log("this works (bottom of EditCompanies.js)");
 
 export default EditCompanies;

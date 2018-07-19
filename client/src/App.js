@@ -5,13 +5,20 @@ import axios from "axios";
 import { Router, Route, Redirect } from "react-router-dom";
 import ViewCompanies from './pages/ViewCompanies';
 import EditCompanies from './pages/EditCompanies';
+import EditContacts from './pages/EditContacts';
+import ViewContacts from './pages/ViewContacts';
+import EditJobOpenings from './pages/EditJobOpenings';
+import ViewJobOpenings from './pages/ViewJobOpenings';
 
 class App extends Component {
   render() {
     return (
       <div>
-      <ViewCompanies/>
-      <EditCompanies/>
+        <ViewCompanies/>
+        <EditCompanies/>
+        <ViewContacts/>
+        <ViewJobOpenings/>
+        <EditJobOpenings/>
       </div>
       );
   }

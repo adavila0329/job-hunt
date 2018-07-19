@@ -5,18 +5,16 @@ import axios from 'axios';
 class ViewCompanies extends Component {
  state = {
    companies: [{
-     _id: 1,
      co_name: "Shell",
      priority: '2'
    }, {
-     _id: 2,
      co_name: "Valero",
      priority: '4'
    }]
  };
 
  refreshCompanies(){
-   console.log("this should go!");
+   console.log("this should go - refreshCompanies!");
    axios.get("/api/companies").then((res) => {
     //  console.log(res);
      this.setState({ companies: res.data });
@@ -30,7 +28,7 @@ class ViewCompanies extends Component {
  render(){
    return (
     <div>
-      {/* /* Map each of our posts */}
+      {/* /* Map each of our companies */}
       {this.state.companies.map( company => (
         <div>{company.co_name}</div>
       ))}
@@ -38,6 +36,6 @@ class ViewCompanies extends Component {
    );
  }
 }
-console.log("this works");
+console.log("this works (bottom of ViewCompanies.js)");
 
 export default ViewCompanies;
