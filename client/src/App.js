@@ -23,7 +23,7 @@ class App extends Component {
         <EditActivities />
         <ViewCompanies />
         <EditCompanies />
-        <EditContacts/>
+        <EditContacts />
         <ViewContacts />
         <ViewJobOpenings />
         <EditJobOpenings />
