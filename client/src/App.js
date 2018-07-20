@@ -13,6 +13,8 @@ import Nav from "./components/Nav/nav";
 import ViewActivities from './pages/ViewActivities';
 import EditActivities from './pages/EditActivities';
 
+// This is my new branch //
+
 class App extends Component {
   render() {
     return <div>
