@@ -16,7 +16,7 @@ class EditCompanies extends Component {
  };
    axios.post("/api/companies", company).then((res) => {
      console.log("hard-coded company post done");
-    //  this.setState({ companies: res.data });
+     this.setState({ companies: res.data });
    });
  }
 

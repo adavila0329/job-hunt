@@ -18,7 +18,7 @@ class EditContacts extends Component {
  };
    axios.post("/api/contacts", contact).then((res) => {
      console.log("contact post done");
-    //  this.setState({ companies: res.data });
+     this.setState({ contacts: res.data });
    });
  }
 

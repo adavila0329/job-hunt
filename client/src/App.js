@@ -9,18 +9,24 @@ import EditContacts from './pages/EditContacts';
 import ViewContacts from './pages/ViewContacts';
 import EditJobOpenings from './pages/EditJobOpenings';
 import ViewJobOpenings from './pages/ViewJobOpenings';
+import Nav from "./components/Nav/nav";
+import ViewActivities from './pages/ViewActivities';
+import EditActivities from './pages/EditActivities';
 
 class App extends Component {
   render() {
-    return (
-      <div>
-        <ViewCompanies/>
-        <EditCompanies/>
-        <ViewContacts/>
-        <ViewJobOpenings/>
-        <EditJobOpenings/>
-      </div>
-      );
+    return <div>
+        <Nav />
+        <ViewActivities />
+        <EditActivities />
+        <ViewCompanies />
+        <EditCompanies />
+        <EditContacts/>
+        <ViewContacts />
+        <ViewJobOpenings />
+        <EditJobOpenings />
+        
+      </div>;
   }
 
   }

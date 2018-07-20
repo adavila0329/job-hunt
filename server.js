@@ -46,6 +46,16 @@ app.get("/api/jobOpenings", function(req, res) {
     });
 });
 
+app.get("/api/activities", function(req, res) {
+    db.Activity.findAll({}).then(function(dbActivity) {
+    console.log("api/activities get \n");
+    console.log(dbActivity);
+    res.json(dbActivity);
+}).catch(function(err) {
+    console.log(err);
+    });
+});
+
 // app.get("/", function (req, res) {
 //     event.preventDefault();
 //     console.log("api/companies was hit");
@@ -102,6 +112,15 @@ app.post("/api/jobOpenings", function(req, res) {
         //db.create
     //     return res.json(req.body);
 }); 
+
+app.post("/api/activities", function(req, res) {
+    db.Activity.create(req.body).then(function(dbActivity) {
+        res.json(dbActivity);
+
+    }).catch(function(err) {
+        console.log(err);
+    });
+});
   
 app.use(function(req, res) { 
             res.sendFile(path.join(__dirname, "client/build/index.html")); 
