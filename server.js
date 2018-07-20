@@ -69,7 +69,7 @@ app.get("/api/activities", function(req, res) {
 //     });
 //   });
 
-app.post("/api/companies", function(req, res) {
+app.post("/api/newCompanies", function(req, res) {
         db.Company.create(req.body).then(function(dbCompany) {
             res.json(dbCompany);
     

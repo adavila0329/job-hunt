@@ -5,8 +5,8 @@ import axios from 'axios';
 // import App from '../App';
 class EditActivities extends Component {
  state = {
-    action_item: "Apply to HP Developer",
-    jobLocation: "Austin"
+    action_item: "",
+    jobLocation: ""
  };
 
  submitActivities = () => {
@@ -17,7 +17,8 @@ class EditActivities extends Component {
  };
    axios.post("/api/activities", activity).then((res) => {
      console.log("hard-coded activity post done");
-     this.setState({ activities: res.data });
+    //  leave (this.setState) commented out
+    //  this.setState({ activities: res.data });
    });
  }
 

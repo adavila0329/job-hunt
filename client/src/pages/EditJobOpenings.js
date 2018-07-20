@@ -7,9 +7,9 @@ import axios from 'axios';
 // import App from '../App';
 class EditJobOpenings extends Component {
  state = {
-     jobTitle: "Project Manager",
-     co_name: "Charles Schwab",
-     jobLocation: "Stonelake"
+     jobTitle: "",
+     co_name: "",
+     jobLocation: ""
  };
 
  submitJobOpenings = () => {
@@ -21,7 +21,8 @@ class EditJobOpenings extends Component {
  };
    axios.post("/api/jobOpenings", opening).then((res) => {
      console.log("Job Opening post done");
-     this.setState({ companies: res.data });
+     //  leave (this.setState) commented out
+    //  this.setState({ jobOpenings: res.data });
    });
  }
 

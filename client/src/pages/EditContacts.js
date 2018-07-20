@@ -4,9 +4,9 @@ import axios from 'axios';
 // import App from '../App';
 class EditContacts extends Component {
  state = {
-     first_name: "Don",
-     last_name: "Holloway",
-     email: "dholl@gmail.com"
+     first_name: "",
+     last_name: "",
+     email: ""
  };
 
  submitContacts = () => {
@@ -18,7 +18,8 @@ class EditContacts extends Component {
  };
    axios.post("/api/contacts", contact).then((res) => {
      console.log("contact post done");
-     this.setState({ contacts: res.data });
+     //  leave (this.setState) commented out
+    //  this.setState({ contacts: res.data });
    });
  }
 

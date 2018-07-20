@@ -25,7 +25,7 @@ class ViewActivities extends Component {
      this.setState({ activities: res.data });
    });
  }
-
+ 
  componentDidMount(){
    this.refreshActivities();
  }
