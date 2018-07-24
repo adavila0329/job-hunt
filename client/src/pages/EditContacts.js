@@ -25,7 +25,9 @@ class EditContacts extends React.Component {
 
     axios.post("/api/editcontacts", {first_name, last_name}).then(res => {
       console.log(res);
-      this.setState({first_name: ""});
+      this.setState({
+        first_name: "",
+        last_name: ""});
     })
   }
 

@@ -4,14 +4,14 @@ import axios from "axios";
 // import App from '../App';
 class EditCompanies extends Component {
   state = {
-      co_name: "HEB",
-      co_url: "www.heb.com",
-      co_email: "heb@aol.com",
-      co_phone: "3453454343",
-      co_address: "23 rd ",
-      co_city: "Alamo",
-      co_state: "TX",
-      priority: "9"
+      co_name: "",
+      co_url: "",
+      co_email: "",
+      co_phone: "",
+      co_address: "",
+      co_city: "",
+      co_state: "",
+      priority: ""
   };
 
   handleInputChange = event => {
