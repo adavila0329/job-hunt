@@ -15,8 +15,8 @@ class ViewCompanies extends Component {
 
  refreshCompanies(){
    console.log("this should go - refreshCompanies!");
-   axios.get("/api/companies").then((res) => {
-    //  console.log(res);
+   axios.get("/api/viewcompanies").then((res) => {
+    console.log(res);
      this.setState({ companies: res.data });
    });
  }

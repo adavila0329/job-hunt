@@ -1,37 +1,41 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import logo from './logo.svg';
-import './App.css';
-import axios from "axios";
-import { Router, Route, Redirect } from "react-router-dom";
-import ViewCompanies from './pages/ViewCompanies';
-import EditCompanies from './pages/EditCompanies';
-import EditContacts from './pages/EditContacts';
-import ViewContacts from './pages/ViewContacts';
-import EditJobOpenings from './pages/EditJobOpenings';
-import ViewJobOpenings from './pages/ViewJobOpenings';
+// import './App.css';
+// import axios from "axios";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import EditContacts from "./pages/EditContacts";
+import EditCompanies from "./pages/EditCompanies";
+import EditJobOpenings from "./pages/EditJobOpenings";
+import EditActivities from "./pages/EditActivities";
+import ViewContacts from "./pages/ViewContacts";
+import ViewCompanies from "./pages/ViewCompanies";
+import ViewJobOpenings from "./pages/ViewJobOpenings";
+import ViewActivities from "./pages/ViewActivities";
 import Nav from "./components/Nav/nav";
-import ViewActivities from './pages/ViewActivities';
-import EditActivities from './pages/EditActivities';
 
-// This is my new branch //
+// This is my view branch //
 
 class App extends Component {
   render() {
-    return <div>
-        <Nav />
-        <ViewActivities />
-        <EditActivities />
-        <ViewCompanies />
-        <EditCompanies />
-        <ViewContacts />
-        <EditContacts />
-        <ViewJobOpenings />
-        <EditJobOpenings />
-        
-      </div>;
+    return (
+      <Router>
+        <div>
+          <Route exact path="/editcontacts" component={EditContacts} />
+          <Route exact path="/editcompanies" component={EditCompanies} />
+          <Route exact path="/viewcompanies" component={ViewCompanies} />
+          <Route exact path="/editactivities" component={EditActivities} />
+           {/*
+          <Route exact path="/editjobopenings" component={EditJobOpenings} />
+          <Route exact path="/editactiviies" component={EditActivities} />
+          <Route exact path="/viewcontacts" component={ViewContacts} />
+          <Route exact path="/viewcompanies" component={ViewCompanies} />
+          <Route exact path="/viewjobopenings" component={ViewJobOpenings} />
+          <Route exact path="/viewactiviies" component={ViewActivities} /> */}
+        </div>
+      </Router>
+    );
   }
-
-  }
+}
 
 // state = {
 //   co_name: "",
@@ -62,7 +66,6 @@ class App extends Component {
 //   this.refreshCompanies();
 // }
 
-
 //   getGetRequest(){
 
 //     axios.get("/api/test").then(res => {
@@ -77,7 +80,7 @@ class App extends Component {
 //     axios.post("/api/test", {test: true}).then(res => {
 
 //        console.log("post test");
-//     });    
+//     });
 // }
 // handleInputChange = event => {
 //   const {name, value} = event.target;
@@ -106,7 +109,7 @@ class App extends Component {
 //        <button onClick={this.saveCompanies}>Submit</button>
 //       </form>
 //      </div>
-//     );   
+//     );
 //   }
 
 //   render(){
@@ -125,8 +128,6 @@ class App extends Component {
 //     );''
 //   }
 
-
 // }
-
 
 export default App;

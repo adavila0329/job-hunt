@@ -1,11 +1,16 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const axios = require("axios");
+const path = require("path"); 
+const dotenv = require ("dotenv");
+
+const db = require("./models");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const path = require("path"); 
-const db = require("./models");
+
+const corsOptions = {
+    origin: 'http://localhost:3000'
+};
 
 app.use(express.static("client/build"));
 
@@ -17,7 +22,7 @@ app.get("/", (req, res) => {
          res.send("Welcome to server.js / route"); 
     });
 
-app.get("/api/companies", function(req, res) {
+app.get("/api/viewcompanies", function(req, res) {
       db.Company.findAll({}).then(function(dbCompany) {
       console.log(dbCompany);
       console.log("api/companies get \n")
@@ -26,7 +31,8 @@ app.get("/api/companies", function(req, res) {
       console.log(err);
     });
 });
-app.get("/api/contacts", function(req, res) {
+
+app.get("/api/viewcontacts", function(req, res) {
     db.Contacts.findAll({}).then(function(dbContact) {
     console.log("api/contacts get \n");
     console.log(dbContact);
@@ -36,7 +42,7 @@ app.get("/api/contacts", function(req, res) {
     });
 });
 
-app.get("/api/jobOpenings", function(req, res) {
+app.get("/api/viewjobOpenings", function(req, res) {
     db.JobOpening.findAll({}).then(function(dbJobOpening) {
     console.log("api/jobOpenings get \n");
     console.log(dbJobOpening);
@@ -46,7 +52,7 @@ app.get("/api/jobOpenings", function(req, res) {
     });
 });
 
-app.get("/api/activities", function(req, res) {
+app.get("/api/viewactivities", function(req, res) {
     db.Activity.findAll({}).then(function(dbActivity) {
     console.log("api/activities get \n");
     console.log(dbActivity);
@@ -56,20 +62,7 @@ app.get("/api/activities", function(req, res) {
     });
 });
 
-// app.get("/", function (req, res) {
-//     event.preventDefault();
-//     console.log("api/companies was hit");
-//     db.Company.findAll({
-//       //   order: [
-//       //     ['co_name', 'ASC'],
-//       //     ['priority', 'ASC']
-//       // ]
-//     }).then(function (dbCompany) {
-//       res.json(dbCompany)
-//     });
-//   });
-
-app.post("/api/newCompanies", function(req, res) {
+app.post("/api/editcompanies", function(req, res) {
         db.Company.create(req.body).then(function(dbCompany) {
             res.json(dbCompany);
     
@@ -82,39 +75,28 @@ app.post("/api/newCompanies", function(req, res) {
         //     return res.json(req.body);
     });
    
-    app.post("/api/contacts", function(req, res) {
-        db.Contacts.create(req.body).then(function(dbContact) {
+    app.post("/api/editcontacts", (req, res) => {
+        db.Contacts.create(req.body).then((dbContact) => {
+            console.log("Posted")
             res.json(dbContact);
     
         }).catch(function(err) {
             console.log(err);
         });
-        //     console.log(req.body);
-        //     console.log("test");
-            //db.create
-        //     return res.json(req.body);
+        
     });    
-// POST route for saving a new post
-// app.post("/api/posts", function(req, res) {
-//     db.Post.create(req.body).then(function(dbPost) {
-//       res.json(dbPost);
-//     });
-//   }); 
-app.post("/api/jobOpenings", function(req, res) {
+ 
+app.post("/api/editjobOpenings", function(req, res) {
     db.JobOpening.create(req.body).then(function(dbJobOpening) {
         res.json(dbJobOpening);
 
     }).catch(function(err) {
         console.log(err);
     });
-    //     console.log(req.body);
-    //     console.log("test");
-        //db.create
-    //     return res.json(req.body);
 }); 
 
-app.post("/api/activities", function(req, res) {
-    db.Activity.create(req.body).then(function(dbActivity) {
+app.post("/api/editactivities", (req, res) => {
+    db.Activity.create(req.body).then((dbActivity) => {
         res.json(dbActivity);
 
     }).catch(function(err) {

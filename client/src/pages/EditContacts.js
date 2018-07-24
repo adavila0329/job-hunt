@@ -1,40 +1,59 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React from "react";
+// import { Link } from "react-router-dom";
+import axios from "axios";
+import { Input} from "../components/Form";
 // import App from '../App';
-class EditContacts extends Component {
- state = {
-     first_name: "",
-     last_name: "",
-     email: ""
- };
+class EditContacts extends React.Component {
 
- submitContacts = () => {
-   console.log("this contact should go!");
-   const contact = {
-       first_name: this.state.first_name,
-       last_name: this.state.last_name,
-       email: this.state.email
- };
-   axios.post("/api/contacts", contact).then((res) => {
-     console.log("contact post done");
-     //  leave (this.setState) commented out
-    //  this.setState({ contacts: res.data });
-   });
- }
+  state = {
+    first_name: "",
+    last_name: ""
+  };
+
+  handleInputChange = event => {
+    const {name, value} = event.target;
+    console.log(name, value);
+    this.setState({ [name]: value});
+  }
+
+  submitContacts = (e) => {
+    e.preventDefault();
+    console.log("this contact should go!");
+    const { first_name, last_name } = this.state;
+
+    
+
+    axios.post("/api/editcontacts", {first_name, last_name}).then(res => {
+      console.log(res);
+      this.setState({first_name: ""});
+    })
+  }
 
 
-// We are trying to display 
- render(){
-   return (
-    <div>
-      <button onClick={this.submitContacts}>
-      SUBMIT
-      </button>
-    </div>
-   );
- }
+  // We are trying to display
+  render() {
+    return (
+      <form onSubmit={this.submitContacts}>
+      <Input
+          name="first_name"
+          onChange={this.handleInputChange}
+          placeholder="First Name"
+          value={this.state.first_name}
+        />
+        <Input
+          name="last_name"
+          onChange={this.handleInputChange}
+          placeholder="Last Name"
+          value={this.state.last_name}
+        />
+        <button>SUBMIT</button>
+      </form>
+    );
+  }
+
 }
 console.log("contact submit works");
+
+
 
 export default EditContacts;

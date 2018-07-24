@@ -5,16 +5,9 @@ import axios from 'axios';
 class ViewContacts extends Component {
  state = {
    contacts: [{
-     //_id: 1,
-     first_name: "Mara",
-     last_name: "Wilson",
-     email: "mwilson@gmail.com"
-   }, {
-     //_id: 2,
-     first_name: "Belinda",
-     last_name: "Carlisle",
-     email: "bcarlisle@gmail.com"
-   }]
+     first_name: "",
+    email: ""
+  }]
  };
 
  refreshContacts(){
@@ -32,10 +25,13 @@ class ViewContacts extends Component {
  render(){
    return (
     <div>
-      {/* /* Map each of our contacts */}
-      {this.state.contacts.map( contact => (
-        <div>{contact.first_name}</div>
-      ))}
+      { /* Map each of our contacts */
+      this.state.contacts.map( contact => (
+        <div key={contact._id}>
+          <h1>{contact.first_name + " " + contact.email}</h1>
+        </div>
+      ))
+      }
     </div>
    );
  }

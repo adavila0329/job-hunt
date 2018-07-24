@@ -1,36 +1,106 @@
 // reserved a file for adding, deleting activities - will // need to restrict by user
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react'
+// import API from "../../utils/API";
+// import { Link } from "react-router-dom";
+// import DeleteBtn from "../../components/DeleteBtn";
+// import { Col, Row, Container } from "../components/Grid";
+// // import { List, ListItem } from "../../components/List";
+import { Input } from "../components/Form";
 import axios from 'axios';
-// import App from '../App';
-class EditActivities extends Component {
+
+class EditActivities extends React.Component {
+
  state = {
     action_item: "",
-    jobLocation: ""
+    jobLocation: "",
+    resume_file_submitted: "",
+    due_date: "",
+    date_applied: "",
+    interview_date: ""
  };
 
- submitActivities = () => {
-   console.log("this activity should go!");
-   const activity = {
-       action_item: this.state.action_item,
-       jobLocation: this.state.jobLocation
+ handleInputChange = event => {
+   const {name, value} = event.target;
+   console.log(name, value);
+   this.setState({ [name]: value});
  };
-   axios.post("/api/activities", activity).then((res) => {
+
+ submitActivities = (e) => {
+     e.preventDefault();
+   console.log("this activity should go!");
+   const {
+       action_item,
+       jobLocation,
+       resume_file_submitted,
+       due_date,
+       date_applied,
+       interview_date
+    } = this.state;
+
+   axios.post("/api/editactivities", { 
+    action_item,
+    jobLocation,
+    resume_file_submitted,
+    due_date,
+    date_applied,
+    interview_date }).then((res) => {
      console.log("hard-coded activity post done");
     //  leave (this.setState) commented out
-    //  this.setState({ activities: res.data });
-   });
+     this.setState({ 
+         action_item: "",
+         jobLocation: "",
+         resume_file_submitted: "",
+         due_date: "",
+         date_applied: "",
+         interview_date: ""});
+   })
  }
 
 
 // We are trying to display 
  render(){
    return (
-    <div>
-      <button onClick={this.submitActivities}>
-      SUBMIT
-      </button>
-    </div>
+           <form onSubmit={this.submitActivities}>
+             <Input
+               name="action_item" 
+               onChange={this.handleInputChange}
+               placeholder="Action" 
+               value={this.state.action_item}
+             />
+             <Input 
+               name="jobLocation"
+               onChange={this.handleInputChange}
+               placeholder="Location" 
+               value={this.state.jobLocation}
+             />
+             <Input 
+               name="resume_file_submitted" 
+               onChange={this.handleInputChange}
+               placeholder="Resume" 
+               value={this.state.resume_file_submitted}
+             />
+             <Input
+               name="due_date" 
+               onChange={this.handleInputChange}
+               placeholder="Due Date" 
+               value={this.state.due_date}
+             />
+             <Input
+               name="date_applied" 
+               onChange={this.handleInputChange}
+               placeholder="Date Applied" 
+               value={this.state.date_applied}
+             /> 
+             <Input
+               name="interview_date" 
+               onChange={this.handleInputChange}
+               placeholder="Interview Date" 
+               value={this.state.interview_date}
+             />
+             <button>
+             Submit Activity
+             </button>
+           </form>
    );
  }
 }

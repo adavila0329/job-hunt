@@ -1,12 +1,8 @@
 module.exports = function (sequelize, DataTypes) {
-    var Contacts = sequelize.define("Contacts", {
+    const Contacts = sequelize.define("Contacts", {
         first_name: {
             type: DataTypes.STRING,
-            allowNull: false,
-
-            validate: {
-                len: [1, 140]
-              }
+            allowNull: true
         },
         last_name: {
             type: DataTypes.STRING
@@ -34,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
         Contacts.belongsTo(models.Company, {
           onDelete: "cascade",
           foreignKey: {
-              allowNull: false
+              allowNull: true
           }
         });
       };
