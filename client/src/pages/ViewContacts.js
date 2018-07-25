@@ -5,14 +5,18 @@ import axios from 'axios';
 class ViewContacts extends Component {
  state = {
    contacts: [{
-     first_name: "",
-    email: ""
-  }]
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_number: "",
+    work_phone: "",
+    co_name: ""
+   }]
  };
 
  refreshContacts(){
    console.log("these contacts should go!");
-   axios.get("/api/contacts").then((res) => {
+   axios.get("/api/viewcontacts").then((res) => {
     //  console.log(res);
      this.setState({ contacts: res.data });
    });
@@ -25,13 +29,15 @@ class ViewContacts extends Component {
  render(){
    return (
     <div>
-      { /* Map each of our contacts */
-      this.state.contacts.map( contact => (
-        <div key={contact._id}>
-          <h1>{contact.first_name + " " + contact.email}</h1>
-        </div>
-      ))
-      }
+    {/* /* Map each of our activities */}
+     {this.state.contacts.map( contact => (
+        <div>{
+          contact.first_name + " " +
+          contact.last_name + " " + contact.email + " " +
+          contact.phone_number + " " +
+          contact.work_phone + " " +
+          contact.co_name}</div>
+      ))}
     </div>
    );
  }

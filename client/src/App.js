@@ -22,12 +22,13 @@ class App extends Component {
         <div>
           <Route exact path="/editcontacts" component={EditContacts} />
           <Route exact path="/editcompanies" component={EditCompanies} />
-          <Route exact path="/viewcompanies" component={ViewCompanies} />
+          {/* <Route exact path="/viewcompanies" component={ViewCompanies} /> */}
           <Route exact path="/editactivities" component={EditActivities} />
+          <Route exact path="/viewactivities" component={ViewActivities} /> 
+          <Route exact path="/viewcontacts" component={ViewContacts} />
            {/*
           <Route exact path="/editjobopenings" component={EditJobOpenings} />
           <Route exact path="/editactiviies" component={EditActivities} />
-          <Route exact path="/viewcontacts" component={ViewContacts} />
           <Route exact path="/viewcompanies" component={ViewCompanies} />
           <Route exact path="/viewjobopenings" component={ViewJobOpenings} />
           <Route exact path="/viewactiviies" component={ViewActivities} /> */}

@@ -20,7 +20,7 @@ class ViewActivities extends Component {
 
  refreshActivities(){
    console.log("this should go - refreshActivities!");
-   axios.get("/api/activities").then((res) => {
+   axios.get("/api/viewactivities").then((res) => {
     //  console.log(res);
      this.setState({ activities: res.data });
    });
